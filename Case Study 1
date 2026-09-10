@@ -51,3 +51,20 @@ Defending enterprise trust and maintaining regulatory good standing during an in
   1. *The Root Cause:* (e.g., Vector boundary inversion or prompt exploitation).
   2. *The Immediate Fixes implemented.*
   3. *The Institutional Lessons Learned:* Detailing how the technical sandbox or RAG boundaries will be modified to ensure the failure mode is permanently neutralized.
+
+markdown
+```mermaid
+graph TD
+    A[Applicant Inputs Data] --> B{Privacy Filter / Guardrail}
+    B -- PI / Sensitive Data Detected --> C[Data Masking & PII Redaction]
+    B -- Cleaned / Non-PII Data --> D[Credit Underwriting Engine]
+    C --> D
+    D --> E[Chatbot Response Generation]
+    D --> F[Secure, Non-Training Storage Log]
+    E --> G[Human-in-the-Loop Review]
+    G --> H[Final Decision Sent to Applicant]
+    
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style G fill:#bbf,stroke:#333,stroke-width:2px
+```
+
