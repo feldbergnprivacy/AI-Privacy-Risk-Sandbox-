@@ -51,3 +51,5 @@ Defending enterprise trust and maintaining regulatory good standing during an in
   1. *The Root Cause:* (e.g., Vector boundary inversion or prompt exploitation).
   2. *The Immediate Fixes implemented.*
   3. *The Institutional Lessons Learned:* Detailing how the technical sandbox or RAG boundaries will be modified to ensure the failure mode is permanently neutralized.
+
+Source Code for Mermaid Diagram: https://mermaid.ai/app/projects/b1e4eb33-e71e-4098-ab18-c6707d40c640/diagrams/c912ed71-0b6d-4410-8bda-f57594699979/version/v0.1/edit?shouldShowPopup=true&fromOnboarding=true
