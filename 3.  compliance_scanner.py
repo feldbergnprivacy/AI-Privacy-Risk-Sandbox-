@@ -1,38 +1,47 @@
 python
 import json
+import datetime
 
-# 1. Load the mock data (The Pac-Man Dots)
+# 1. Load the Data (The "Proposed Project")
 with open('mock_data.json', 'r') as file:
-    transactions = json.load(file)
+    project_data = json.load(file)
 
-print("--- STARTING AIGP & CIPP/E COMPLIANCE SCAN ---\n")
+print(f"--- GENERATING AUTOMATED PRIVACY IMPACT ASSESSMENT (PIA) ---")
+print(f"Date: {datetime.date.today()}")
+print(f"Frameworks Applied: GDPR Art. 35, NIST AI RMF, CIPP/US\n")
 
-# 2. The Logic Loop (Pac-Man eating the dots)
-for txn in transactions:
-    risk_score = 0
-    flags = []
-
-    # CHECK 1: GDPR Cross-Border (CIPP/E)
-    # If user is in Europe (DE/FR) and data moves to US server logic
-    if txn['user_location'] in ['Berlin, DE', 'Paris, FR']:
-        print(f"Checking EU Data Subject: {txn['transaction_id']}")
+for item in project_data:
+    # START THE ASSESSMENT FOR EACH DATA FLOW
+    print(f"Subject: Transaction ID {item['transaction_id']}")
+    print("-" * 40)
     
-    # CHECK 2: Security Failure (CIPT)
-    # If data is unencrypted, it violates privacy-by-design
-    if txn['encryption_level'] == "None":
-        risk_score += 50
-        flags.append("CRITICAL: Unencrypted Data Storage (Violates NIST-SP-800)")
+    # SECTION 1: NATURE OF PROCESSING
+    print(f"1. DATA TYPE DETECTED: [{item['data_type']}]")
+    
+    # SECTION 2: NECESSITY & PROPORTIONALITY (The PIA Core)
+    risk_level = "LOW"
+    mitigation_required = "None"
+    
+    # Trigger 1: Biometric Data (High Risk per GDPR Art 9)
+    if "biometric" in item['data_type']:
+        risk_level = "HIGH (Sensitive Category)"
+        mitigation_required = "Must implement explicit consent & encryption at rest."
+        
+    # Trigger 2: Automated Decision Making (High Risk per GDPR Art 22)
+    if item['ai_decision_made'] and not item['consent_obtained']:
+        risk_level = "CRITICAL (Illegal Processing)"
+        mitigation_required = "STOP PROCESSING. Human-in-the-loop required immediately."
 
-    # CHECK 3: Illegal AI Consent (AIGP)
-    # If AI made a decision but no consent was signed
-    if txn['ai_decision_made'] == True and txn['consent_obtained'] == False:
-        risk_score += 50
-        flags.append("VIOLATION: Automated Decision without Consent (Art. 22 GDPR)")
-
-    # 3. Report Results
-    if risk_score > 0:
-        print(f"❌ RISK DETECTED in {txn['transaction_id']}: {flags}")
+    print(f"2. RISK RATING: {risk_level}")
+    
+    # SECTION 3: REMEDIATION PLAN
+    if risk_level != "LOW":
+        print(f"3. REQUIRED MITIGATION: {mitigation_required}")
+        print("   STATUS: ❌ PIA FAILED - DO NOT DEPLOY")
     else:
-        print(f"✅ {txn['transaction_id']} is COMPLIANT.")
+        print("   STATUS: ✅ PIA APPROVED")
+    
+    print("\n")
 
-print("\n--- SCAN COMPLETE ---")
+print("--- END OF ASSESSMENT REPORT ---")
+
