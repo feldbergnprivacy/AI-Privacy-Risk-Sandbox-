@@ -1,0 +1,27 @@
+json
+[
+  {
+    "transaction_id": "TXN_1001",
+    "user_location": "Berlin, DE",
+    "data_type": "biometric_voice_print",
+    "consent_obtained": false,
+    "encryption_level": "AES-256",
+    "ai_decision_made": true
+  },
+  {
+    "transaction_id": "TXN_1002",
+    "user_location": "New York, US",
+    "data_type": "credit_score_raw",
+    "consent_obtained": true,
+    "encryption_level": "None",
+    "ai_decision_made": true
+  },
+  {
+    "transaction_id": "TXN_1003",
+    "user_location": "Paris, FR",
+    "data_type": "email_address",
+    "consent_obtained": true,
+    "encryption_level": "AES-256",
+    "ai_decision_made": false
+  }
+]
